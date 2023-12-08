@@ -1,6 +1,6 @@
 ﻿namespace AppAutomacao
 {
-    partial class Form1
+    partial class frmConfirmacao
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            btnConfirmar = new Button();
+            SuspendLayout();
+            // 
+            // btnConfirmar
+            // 
+            btnConfirmar.Location = new Point(205, 173);
+            btnConfirmar.Name = "btnConfirmar";
+            btnConfirmar.Size = new Size(125, 92);
+            btnConfirmar.TabIndex = 0;
+            btnConfirmar.Text = "Confirmar";
+            btnConfirmar.UseVisualStyleBackColor = true;
+            btnConfirmar.Click += btnConfirmar_Click;
+            // 
+            // frmConfirmacao
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(593, 426);
+            Controls.Add(btnConfirmar);
+            Name = "frmConfirmacao";
+            Text = "Automação RPA";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnConfirmar;
     }
 }

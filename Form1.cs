@@ -1,10 +1,16 @@
 namespace AppAutomacao
 {
-    public partial class Form1 : Form
+    public partial class frmConfirmacao : Form
     {
-        public Form1()
+        public frmConfirmacao()
         {
             InitializeComponent();
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            var conexaoWeb = new AutomacaoWeb();
+            conexaoWeb.web();
         }
     }
 }
