@@ -33,7 +33,7 @@
             // 
             // btnConfirmar
             // 
-            btnConfirmar.Location = new Point(205, 173);
+            btnConfirmar.Location = new Point(187, 92);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(125, 92);
             btnConfirmar.TabIndex = 0;
@@ -45,10 +45,10 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(593, 426);
+            ClientSize = new Size(561, 322);
             Controls.Add(btnConfirmar);
             Name = "frmConfirmacao";
-            Text = "Automação RPA";
+            Text = "Automação Esocial";
             ResumeLayout(false);
         }
 
