@@ -1,6 +1,8 @@
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
+using System;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace AppAutomacao
 {
@@ -22,6 +24,8 @@ namespace AppAutomacao
             InitializeComponent();
         }
 
+        int contador = 0;
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (IsConnected())
@@ -33,6 +37,27 @@ namespace AppAutomacao
             {
                 MessageBox.Show("Não exite conexão ativa com a internet.");
             }
+
+            timer1.Enabled = true;
+            bpBarraProgresso.Value = 0;
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            contador++;
+
+            lblTotal.Text = "Carregando " +  contador.ToString() + " %";
+
+            if(bpBarraProgresso.Value < 100)
+            {
+                bpBarraProgresso.Value++;
+            }
+            if (bpBarraProgresso.Value == 100)
+            {
+                timer1.Enabled = false;
+            }
+
             
         }
     }

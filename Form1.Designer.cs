@@ -1,4 +1,7 @@
-﻿namespace AppAutomacao
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace AppAutomacao
 {
     partial class frmConfirmacao
     {
@@ -28,7 +31,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnConfirmar = new Button();
+            bpBarraProgresso = new ProgressBar();
+            lblTotal = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // btnConfirmar
@@ -41,19 +48,45 @@
             btnConfirmar.UseVisualStyleBackColor = true;
             btnConfirmar.Click += btnConfirmar_Click;
             // 
+            // bpBarraProgresso
+            // 
+            bpBarraProgresso.Location = new Point(12, 266);
+            bpBarraProgresso.Name = "bpBarraProgresso";
+            bpBarraProgresso.Size = new Size(537, 29);
+            bpBarraProgresso.TabIndex = 1;
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(12, 227);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(33, 20);
+            lblTotal.TabIndex = 2;
+            lblTotal.Text = "0 %";
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // frmConfirmacao
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(561, 322);
+            Controls.Add(lblTotal);
+            Controls.Add(bpBarraProgresso);
             Controls.Add(btnConfirmar);
             Name = "frmConfirmacao";
             Text = "Automação Esocial";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnConfirmar;
+        private ProgressBar bpBarraProgresso;
+        private Label lblTotal;
+        private System.Windows.Forms.Timer timer1;
     }
 }

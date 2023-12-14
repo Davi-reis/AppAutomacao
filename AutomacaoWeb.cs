@@ -21,11 +21,15 @@ namespace AppAutomacao
         {
             driver.Navigate().GoToUrl("https://login.esocial.gov.br/login.aspx");
 
+            driver.Manage().Window.Maximize();
+
             driver.FindElement(By.XPath("//*[@id=\"login-acoes\"]/div[2]/p/button")).Click();
 
-            driver.FindElement(By.XPath("//*[@id=\"accountId\"]")).SendKeys("-- colocar o CPF --");
+            driver.FindElement(By.XPath("//*[@id=\"login-certificate\"]")).Click();
 
-            driver.FindElement(By.XPath("//*[@id=\"enter-account-id\"]")).Click();
+            
+
+            //driver.FindElement(By.XPath("//*[@id=\"enter-account-id\"]")).Click();
         }
     }
 
