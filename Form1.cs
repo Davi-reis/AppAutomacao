@@ -38,8 +38,8 @@ namespace AppAutomacao
                 MessageBox.Show("Não exite conexão ativa com a internet.");
             }
 
-            timer1.Enabled = true;
-            bpBarraProgresso.Value = 0;
+            //timer1.Enabled = true;
+            //bpBarraProgresso.Value = 0;
 
         }
 
