@@ -32,6 +32,7 @@ namespace AppAutomacao
             {
                 var conexaoWeb = new AutomacaoWeb();
                 conexaoWeb.web();
+                ArquivosXML.SalvarXML();
             }
             else
             {
