@@ -30,9 +30,25 @@ namespace AppAutomacao
 
             driver.FindElement(By.XPath("//*[@id=\"login-certificate\"]")).Click();
 
-            
+            driver.FindElement(By.XPath("//*[@id=\"menuDownload\"]")).Click();
 
-            //driver.FindElement(By.XPath("//*[@id=\"enter-account-id\"]")).Click();
+            driver.FindElement(By.XPath("/html/body/div[3]/div[3]/div/div/ul/li[4]/ul/li[2]/a")).Click();
+
+            driver.FindElement(By.XPath("//*[@id=\"TipoPedido\"]")).Click();
+
+            driver.FindElement(By.XPath("//*[@id=\"TipoPedido\"]/option[2]")).Click();
+
+            driver.FindElement(By.XPath("//*[@id=\"DataInicial\"]")).SendKeys(DateTime.Now.AddDays(-180).ToString());           
+
+            driver.FindElement(By.XPath("//*[@id=\"DataFinal\"]")).SendKeys(DateTime.Now.AddDays(-2).ToString());
+
+            driver.FindElement(By.XPath("//*[@id=\"btnSalvar\"]")).Click();
+
+            driver.FindElement(By.XPath("//*[@id=\"conteudo - pagina\"]/form/section/div/div[4]/input")).Click();
+
+
+
+
         }
     }
 
