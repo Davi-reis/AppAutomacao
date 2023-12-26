@@ -14,9 +14,11 @@ namespace AppAutomacao
         public IWebDriver driver;
 
         public AutomacaoWeb()
-        {
+        {   
+            // codigo para não mostrar o CMD durante a execução do programa
             var service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = true;
+
             driver = new ChromeDriver(service , new ChromeOptions());
         }
 
