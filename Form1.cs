@@ -36,7 +36,7 @@ namespace AppAutomacao
             }
             else
             {
-                MessageBox.Show("Não exite conexão ativa com a internet.");
+                MessageBox.Show("Não existe conexão ativa com a internet.");
             }
 
             //timer1.Enabled = true;
