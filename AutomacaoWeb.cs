@@ -19,12 +19,12 @@ namespace AppAutomacao
         public IWebDriver driver;
 
         public AutomacaoWeb()
-        {   
+        {
             // codigo para não mostrar o CMD durante a execução do programa
             var service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = true;
 
-            driver = new ChromeDriver(service , new ChromeOptions());
+            driver = new ChromeDriver(service, new ChromeOptions());
         }
 
         public void web()
@@ -43,42 +43,35 @@ namespace AppAutomacao
 
             driver.FindElement(By.XPath("//*[@id=\"TipoPedido\"]")).Click();
 
-            driver.FindElement(By.XPath("//*[@id=\"TipoPedido\"]/option[2]")).Click();            
+            driver.FindElement(By.XPath("//*[@id=\"TipoPedido\"]/option[2]")).Click();
 
-            driver.FindElement(By.XPath("//*[@id=\"conteudo-pagina\"]/form/section/div[2]/div[1]/button")).Click();
+            //============================== Solicitação das Datas ==========================================
 
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[1]/span")).Click();
+            driver.FindElement(By.XPath("//*[@id=\"DataInicial\"]")).Click();
 
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[1]/span")).Click();
+            var queryDataInicial = driver.FindElement(By.XPath("//*[@id=\"DataInicial\"]"));
+            DateTime dataInicial = DateTime.Now.AddDays(-180);
+            queryDataInicial.SendKeys(dataInicial.ToString());
 
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[1]/span")).Click();
+            Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[1]/span")).Click();
+            driver.FindElement(By.XPath("//*[@id=\"DataFinal\"]")).Click();
+            driver.FindElement(By.XPath("//*[@id=\"DataFinal\"]")).Clear();
 
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[1]/span")).Click();
+            var queryDataFinal = driver.FindElement(By.XPath("//*[@id=\"DataFinal\"]"));
+            DateTime dataFinal = DateTime.Now.AddDays(-3);
+            queryDataFinal.SendKeys(dataFinal.ToString());
 
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[1]/span")).Click();
-
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[5]/a")).Click();
-
-            //======================================================================
-
-            driver.FindElement(By.XPath("//*[@id=\"conteudo-pagina\"]/form/section/div[2]/div[2]/button")).Click();
-
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span")).Click();
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span")).Click();
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span")).Click();
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span")).Click();
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span")).Click();
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span")).Click();
-
-            driver.FindElement(By.XPath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[6]/a")).Click();
+            //==============================================================================================
 
             driver.FindElement(By.XPath("//*[@id=\"btnSalvar\"]")).Click();
 
             driver.FindElement(By.XPath("//*[@id=\"conteudo-pagina\"]/form/section/div/div[4]/input")).Click();
 
-
             //========================= Aqui começa o download dos Arquivos ==================================
+        }
+    }
+}
+           
 
             
