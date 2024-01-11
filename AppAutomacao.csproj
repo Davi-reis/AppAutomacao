@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="2Captcha" Version="2.2.0" />
     <PackageReference Include="Easy.Automation" Version="1.0.0.12" />
     <PackageReference Include="Selenium.Support" Version="3.8.0" />
