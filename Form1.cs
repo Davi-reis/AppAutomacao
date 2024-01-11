@@ -1,3 +1,4 @@
+using AppAutomacao.Two2Captcha;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
 using System;
@@ -30,9 +31,11 @@ namespace AppAutomacao
         {
             if (IsConnected())
             {
-                var conexaoWeb = new AutomacaoWeb();
-                conexaoWeb.web();
-                ArquivosXML.SalvarXML();
+                //var conexaoWeb = new AutomacaoWeb();
+                //conexaoWeb.web();
+                var testeCaptcha = new Two2Captcha.TwoCaptcha();
+                testeCaptcha.SolveReCaptchaV2();
+                //ArquivosXML.SalvarXML();
             }
             else
             {
