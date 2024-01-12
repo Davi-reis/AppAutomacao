@@ -1,3 +1,4 @@
+using AppAutomacao.Two2Captcha;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
 using System;
@@ -22,10 +23,6 @@ namespace AppAutomacao
         public frmConfirmacao()
         {
             InitializeComponent();
-
-            dateTimePickerInicial.CustomFormat = " ";
-            dateTimePickerFinal.CustomFormat = " ";
-
         }
 
         int contador = 0;
@@ -34,19 +31,19 @@ namespace AppAutomacao
         {
             if (IsConnected())
             {
-                var solicitacao = cboListaSolicitacao.Text;
-
-                var conexaoWeb = new AutomacaoWeb();
-                conexaoWeb.web(solicitacao);
-                ArquivosXML.SalvarXML();
+                //var conexaoWeb = new AutomacaoWeb();
+                //conexaoWeb.web();
+                var testeCaptcha = new Two2Captcha.TwoCaptcha();
+                testeCaptcha.SolveReCaptchaV2();
+                //ArquivosXML.SalvarXML();
             }
             else
             {
                 MessageBox.Show("Não existe conexão ativa com a internet.");
             }
 
-            timer1.Enabled = true;
-            bpBarraProgresso.Value = 0;
+            //timer1.Enabled = true;
+            //bpBarraProgresso.Value = 0;
 
         }
 
@@ -54,9 +51,9 @@ namespace AppAutomacao
         {
             contador++;
 
-            lblTotal.Text = "Carregando " + contador.ToString() + " %";
+            lblTotal.Text = "Carregando " +  contador.ToString() + " %";
 
-            if (bpBarraProgresso.Value < 100)
+            if(bpBarraProgresso.Value < 100)
             {
                 bpBarraProgresso.Value++;
             }
@@ -65,31 +62,7 @@ namespace AppAutomacao
                 timer1.Enabled = false;
             }
 
-
-        }
-
-        private void dateTimePickerFinal_ValueChanged(object sender, EventArgs e)
-        {
-            dateTimePickerFinal.Format = DateTimePickerFormat.Custom;
-            dateTimePickerFinal.CustomFormat = "dd/MM/yyyy";
-
-            DateTime inicial = dateTimePickerInicial.Value;
-            DateTime final = dateTimePickerFinal.Value;
-
-            var result = (final - inicial).Days;
-
-            if (result > 180)
-            {
-
-                MessageBox.Show("O intervalo de dados não deve ultrapassar 185 dias.");
-
-            }
-        }
-
-        private void dateTimePickerInicial_ValueChanged(object sender, EventArgs e)
-        {
-            dateTimePickerInicial.Format = DateTimePickerFormat.Custom;
-            dateTimePickerInicial.CustomFormat = "dd/MM/yyyy";
+            
         }
     }
 }

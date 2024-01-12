@@ -10,8 +10,10 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
-    <PackageReference Include="Selenium.Support" Version="4.16.1" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.16.1" />
+    <PackageReference Include="2Captcha" Version="2.2.0" />
+    <PackageReference Include="Easy.Automation" Version="1.0.0.12" />
+    <PackageReference Include="Selenium.Support" Version="3.8.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.8.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="120.0.6099.7100" />
   </ItemGroup>
 
