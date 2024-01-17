@@ -42,6 +42,8 @@ namespace AppAutomacao
             dateTimePickerFinal = new DateTimePicker();
             cboListaSolicitacao = new ComboBox();
             label2 = new Label();
+            txtCPFtrabalhador = new TextBox();
+            lblCpfTrabalhador = new Label();
             SuspendLayout();
             // 
             // btnConfirmar
@@ -129,11 +131,31 @@ namespace AppAutomacao
             label2.TabIndex = 8;
             label2.Text = "Tipo de solicitação: ";
             // 
+            // txtCPFtrabalhador
+            // 
+            txtCPFtrabalhador.Location = new Point(196, 164);
+            txtCPFtrabalhador.Name = "txtCPFtrabalhador";
+            txtCPFtrabalhador.Size = new Size(125, 27);
+            txtCPFtrabalhador.TabIndex = 9;
+            // 
+            // lblCpfTrabalhador
+            // 
+            lblCpfTrabalhador.AutoSize = true;
+            lblCpfTrabalhador.Location = new Point(37, 171);
+            lblCpfTrabalhador.Name = "lblCpfTrabalhador";
+            lblCpfTrabalhador.Size = new Size(146, 20);
+            lblCpfTrabalhador.TabIndex = 10;
+            lblCpfTrabalhador.Text = "CPF do Trabalhador: ";
+            // 
             // frmConfirmacao
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(716, 404);
+            BackColor = Color.CadetBlue;
+            BackgroundImageLayout = ImageLayout.Center;
+            ClientSize = new Size(713, 404);
+            Controls.Add(lblCpfTrabalhador);
+            Controls.Add(txtCPFtrabalhador);
             Controls.Add(label2);
             Controls.Add(cboListaSolicitacao);
             Controls.Add(dateTimePickerFinal);
@@ -162,5 +184,7 @@ namespace AppAutomacao
         private DateTimePicker dateTimePickerFinal;
         private ComboBox cboListaSolicitacao;
         private Label label2;
+        private TextBox txtCPFtrabalhador;
+        private Label lblCpfTrabalhador;
     }
 }

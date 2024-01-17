@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.DevTools.V118.Runtime;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Edge;
@@ -12,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using SeleniumExtras.WaitHelpers;
+using OpenQA.Selenium.Firefox;
 
 namespace AppAutomacao
 {
@@ -32,14 +32,17 @@ namespace AppAutomacao
         }
 
         public void web(string solicitacao)
-        {            
+        {     
+            
             driver.Navigate().GoToUrl("https://login.esocial.gov.br/login.aspx");
 
             driver.Manage().Window.Maximize();
 
             driver.FindElement(By.XPath("//*[@id=\"login-acoes\"]/div[2]/p/button")).Click();
 
-            driver.FindElement(By.XPath("//*[@id=\"login-certificate\"]")).Click();            
+            //driver.FindElement(By.XPath("//*[@id=\"cert-digital-cloud\"]/button")).Click();
+
+            driver.FindElement(By.XPath("//*[@id=\"login-certificate\"]")).Click();
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
             wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"menuDownload\"]")));

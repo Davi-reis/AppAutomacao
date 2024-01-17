@@ -23,37 +23,61 @@ namespace AppAutomacao
         public frmConfirmacao()
         {
             InitializeComponent();
+
+            dateTimePickerInicial.CustomFormat = " ";
+            dateTimePickerFinal.CustomFormat = " ";
+            lblCpfTrabalhador.Visible = false;
+            txtCPFtrabalhador.Visible = false;
         }
 
         int contador = 0;
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (IsConnected())
+            if (cboListaSolicitacao.Text == string.Empty)
             {
-                //var conexaoWeb = new AutomacaoWeb();
-                //conexaoWeb.web();
-                var testeCaptcha = new Two2Captcha.TwoCaptcha();
-                testeCaptcha.SolveReCaptchaV2();
-                //ArquivosXML.SalvarXML();
+                MessageBox.Show("Selecione o texto");
+                
+            }
+            else if (dateTimePickerInicial.CustomFormat == " " || dateTimePickerFinal.CustomFormat == " ")
+            {
+                MessageBox.Show("Selecione a data inicial e final");
             }
             else
             {
-                MessageBox.Show("Não existe conexão ativa com a internet.");
-            }
+                if (IsConnected())
+                {
+                    var solicitacao = cboListaSolicitacao.Text;
+
+                    if (solicitacao == "Todos os eventos de um determinado trabalhador")
+                    {
+                        lblCpfTrabalhador.Visible = true;
+                        txtCPFtrabalhador.Visible = true;
+                    }
+
+                    var conexaoWeb = new AutomacaoWeb();
+                    conexaoWeb.web(solicitacao);
+                    //var testeCaptcha = new Two2Captcha.TwoCaptchas();
+                    //testeCaptcha.SolveReCaptchaV2();
+                    //ArquivosXML.SalvarXML();
+                }
+                else
+                {
+                    MessageBox.Show("Não existe conexão ativa com a internet.");
+                }
+            }            
 
             //timer1.Enabled = true;
             //bpBarraProgresso.Value = 0;
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             contador++;
 
-            lblTotal.Text = "Carregando " +  contador.ToString() + " %";
+            lblTotal.Text = "Carregando " + contador.ToString() + " %";
 
-            if(bpBarraProgresso.Value < 100)
+            if (bpBarraProgresso.Value < 100)
             {
                 bpBarraProgresso.Value++;
             }
@@ -62,7 +86,32 @@ namespace AppAutomacao
                 timer1.Enabled = false;
             }
 
-            
+
         }
+
+        private void dateTimePickerFinal_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerFinal.Format = DateTimePickerFormat.Custom;
+            dateTimePickerFinal.CustomFormat = "dd/MM/yyyy";
+
+            DateTime inicial = dateTimePickerInicial.Value;
+            DateTime final = dateTimePickerFinal.Value;
+
+            var result = (final - inicial).Days;
+
+            if (result > 180)
+            {
+
+                MessageBox.Show("O intervalo de dados não deve ultrapassar 180 dias.");
+
+            }
+        }
+
+        private void dateTimePickerInicial_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerInicial.Format = DateTimePickerFormat.Custom;
+            dateTimePickerInicial.CustomFormat = "dd/MM/yyyy";
+        }
+        
     }
 }
